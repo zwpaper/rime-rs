@@ -19,7 +19,7 @@ fn main() {
     let bindings = bindgen::Builder::default()
         // The input header we would like to generate
         // bindings for.
-        .header("rime_api.h")
+        .header("./lib/rime_api.h")
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
@@ -31,6 +31,6 @@ fn main() {
     // Write the bindings to the $OUT_DIR/bindings.rs file.
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
     bindings
-        .write_to_file(out_path.join("./src/rime/rime-binding.rs"))
+        .write_to_file(out_path.join("./src/rime/ffi.rs"))
         .expect("Couldn't write bindings!");
 }
